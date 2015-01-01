@@ -1,16 +1,21 @@
 /**
 *  form checker for jQuery, version 1.2.9
-*  (c) 2014 amazigh.ks
+*  (c) 2014 celiaks
 *
 *  form checker for jQuery is freely distributable.
 *  For details, see the git repository : https://github.com/celiaks/formcheckerSL.git
 *
 */
-// allow you to check all required input and textarea 
-// specify allow only number for chosen input.
-// limit length of input
-// check email sentax
-// handle a callback function if the input checked is not elegible
+// -Check required input or textarea
+// -Check email Syntax
+// -Check if equal to a specific value
+// -Set limit length
+// -Allow onlly numbers
+// -Set allowed characters
+// -Add a fail function
+// -Add a callback function
+// -Add an ajax function
+
 
 (function ( $ ) {
  
@@ -29,8 +34,8 @@
             returnfalse : false,
 			      requiredEmpty:          function (element){alert('please enter all required');element.focus();},
             InvalidEmailFunction:          function (element){ alert('invalide email sentax');element.focus();},
-            NotEqualFunction:          function (element){ alert(element.val()+' not equal to '+ element.attr(settings.MustEqualTo) );element.focus();},
-			      succesfunctioncallback: function (){alert('success');},
+            NotEqualFunction:          function (element){ alert(element.val()+' not equal to '+ element.attr('data-MustEqualTo') );element.focus();},
+            succesfunctioncallback: function (){alert('success');},
           }, options );
 
 
@@ -164,8 +169,7 @@ if(value==$(this).attr(settings.MustEqualTo)){
 
   settings.button.on('click',function (e){
 	  var res=test(form);
-	 console.log(res);
-	
+
 	 if(res){
 		//alert(res);
 		 settings.succesfunctioncallback();
