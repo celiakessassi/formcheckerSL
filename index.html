@@ -141,18 +141,29 @@ Get it for free from github </a>   <h2>Full list of features</h2>
     $(document).ready(function(e) {
     
        $('form').formcheckerSL({
-            button      : $('input[type="submit"]',this),
-            required    : 'data-champrequired',
-            email       : 'data-emailsytax',
-            number      : 'data-onlynumber',
-            maxlength   : 'data-maxlength',
-            AllawedChar : 'data-AllawedChar',
-            MustEqualTo : 'data-MustEqualTo',
-            returnfalse : false,
-            requiredEmpty:          function (element){alert('please enter all required');element.focus();},
-            InvalidEmailFunction:          function (element){ alert('invalide email sentax');element.focus();},
-            NotEqualFunction:          function (element){ alert(element.val()+' not equal to '+ element.attr('data-MustEqualTo') );element.focus();},
-            succesfunctioncallback: function (){alert('success');},
+      button: $('input[type="submit"]', this),
+      required: 'data-champrequired',
+      email: 'data-emailsytax',
+      number: 'data-onlynumber',
+      maxlength: 'data-maxlength',
+      AllawedChar: 'data-AllawedChar',
+      MustEqualTo: 'data-MustEqualTo',
+      returnfalse: false,
+      requiredEmpty: function(element) {
+        alert('please enter all required');
+        element.focus();
+      },
+      InvalidEmailFunction: function(element) {
+        alert('invalide email sentax');
+        element.focus();
+      },
+      NotEqualFunction: function(element) {
+        alert(element.val() + ' not equal to ' + element.attr('data-MustEqualTo'));
+        element.focus();
+      },
+      succesfunctioncallback: function() {
+        alert('success');
+      },
         });
 
 });
