@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <title>From checker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<!--bootstrap-->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <!--bootstrap-->
 </head>
 <body>
 
@@ -110,7 +109,7 @@
  <div class="col-lg-6"> 
     <h2>Download</h2>
     <a href="https://github.com/celiaks/formcheckerSL">
-<img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="30" alt="github"/>
+<img src="images/GitHub-Mark.png" width="30" alt="github"/>
 Get it for free from github </a>   <h2>Full list of features</h2>
  
 <ul class="list-unstyled">
@@ -141,29 +140,18 @@ Get it for free from github </a>   <h2>Full list of features</h2>
     $(document).ready(function(e) {
     
        $('form').formcheckerSL({
-      button: $('input[type="submit"]', this),
-      required: 'data-champrequired',
-      email: 'data-emailsytax',
-      number: 'data-onlynumber',
-      maxlength: 'data-maxlength',
-      AllawedChar: 'data-AllawedChar',
-      MustEqualTo: 'data-MustEqualTo',
-      returnfalse: false,
-      requiredEmpty: function(element) {
-        alert('please enter all required');
-        element.focus();
-      },
-      InvalidEmailFunction: function(element) {
-        alert('invalide email sentax');
-        element.focus();
-      },
-      NotEqualFunction: function(element) {
-        alert(element.val() + ' not equal to ' + element.attr('data-MustEqualTo'));
-        element.focus();
-      },
-      succesfunctioncallback: function() {
-        alert('success');
-      },
+            button      : $('input[type="submit"]',this),
+            required    : 'data-champrequired',
+            email       : 'data-emailsytax',
+            number      : 'data-onlynumber',
+            maxlength   : 'data-maxlength',
+            AllawedChar : 'data-AllawedChar',
+            MustEqualTo : 'data-MustEqualTo',
+            returnfalse : false,
+            requiredEmpty:          function (element){alert('please enter all required');element.focus();},
+            InvalidEmailFunction:          function (element){ alert('invalide email sentax');element.focus();},
+            NotEqualFunction:          function (element){ alert(element.val()+' not equal to '+ element.attr('data-MustEqualTo') );element.focus();},
+            succesfunctioncallback: function (){alert('success');},
         });
 
 });
@@ -190,12 +178,60 @@ Get it for free from github </a>   <h2>Full list of features</h2>
  
 </div>
 <script src="js/jquery-1.11.0.min.js"></script> 
-<script src="FormChecker/formcheckersl.js"></script> 
+
+<!--bootstartp--> 
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<!--bootstartp-->
+<script src="FormChecker/formcheckersl.min.js"></script> 
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script> 
 
 <script type="text/javascript">
     $(document).ready(function(e) {
-        $('form').formcheckerSL();
+  var requiredFn = function (element){ 
+  element.focus();element.tooltip({
+  title : 'required element' ,
+  trigger : 'manual' , 
+  });
+  element.tooltip('toggle');
+  setTimeout(function(){element.tooltip('destroy');}, 1000);
+    };
+  var emailFun = function (element){ 
+  element.focus();element.tooltip({
+  title : 'invalid email' ,
+  trigger : 'manual' , 
+  });
+  element.tooltip('toggle');
+  setTimeout(function(){element.tooltip('destroy');}, 1000);
+    };
+  var MustEqualFun = function (element){ 
+  element.focus();element.tooltip({
+  title : 'not equal to value' ,
+  trigger : 'manual' , 
+  });
+  element.tooltip('toggle');
+  setTimeout(function(){element.tooltip('destroy');}, 1000);
+    };       
+      
+  var successFun = function (form){ 
+    successAlert='<div class="alert alert-success this_alert" role="alert">Form sent<div>'
+form.before(successAlert);
+
+ $('html, body').animate({
+        scrollTop: parseInt($('.this_alert').offset().top-10)
+    }, 1000);
+
+  };
+          $('form').formcheckerSL(
+          {
+            requiredEmpty : requiredFn,
+            InvalidEmailFunction:  emailFun ,  
+            NotEqualFunction:   MustEqualFun ,      
+            succesfunctioncallback: successFun ,
+            preventDefault : true,
+          
+
+          });
+
 
 });
 
