@@ -24,3 +24,17 @@ form checker plugin for jquery
 <!--requires at least jquery 1.6--><br>
 &lt;script src="js/jquery-1.11.0.min.js">&lt;/script> <br>
 &lt;script src="FormChecker/formcheckersl.js">&lt;/script> 
+
+Indent every line of the block by at least 4 spaces or 1 tab. Alternatively, 
+you can also use 3 backtick quote marks before and after the block, like this:
+ 
+```
+Text to appear as a code block.
+```
+ 
+Within a code block, ampersands (&) and angle brackets (< and >)are automatically 
+converted into HTML entities.
+ 
+This is a normal paragraph:
+    This is a code block.
+    With multiple lines.
