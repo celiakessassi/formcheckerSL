@@ -23,7 +23,7 @@ form checker plugin for jquery
              
 
 ```
-<!--requires at least jquery 1.6--><br>
-&lt;script src="js/jquery-1.11.0.min.js">&lt;/script> <br>
-&lt;script src="FormChecker/formcheckersl.js">&lt;/script> 
+<!--requires at least jquery 1.6-->
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="FormChecker/formcheckersl.js"></script> 
 ```
