@@ -19,5 +19,8 @@ form checker plugin for jquery
 8. Add a callback function
 9. Add an ajax function
  
-
-
+##Installation
+             
+&lt;!--requires at least jquery 1.6-->
+&lt;script src="js/jquery-1.11.0.min.js">&lt;/script> 
+&lt;script src="FormChecker/formcheckersl.js">&lt;/script> 
