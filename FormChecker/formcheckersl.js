@@ -1,9 +1,10 @@
 /**
  *  form checker for jQuery, version 1.2.9
- *  (c) 2014 amazigh.ks
+ *  (c) 2014 celiaks
  *
  *  form checker for jQuery is freely distributable.
  *  For details, see the git repository : https://github.com/celiaks/formcheckerSL.git
+ *  or visit owr page http://celiaks.github.io/formcheckerSL/
  *
  */
 // -Check required input or textarea
@@ -29,7 +30,7 @@
       maxlength: 'data-maxlength',
       AllawedChar: 'data-AllawedChar',
       MustEqualTo: 'data-MustEqualTo',
-      returnfalse: false,
+      preventDefault: false,
       requiredEmpty: function(element) {
         alert('please enter all required');
         element.focus();
@@ -42,7 +43,7 @@
         alert(element.val() + ' not equal to ' + element.attr('data-MustEqualTo'));
         element.focus();
       },
-      succesfunctioncallback: function() {
+      succesfunctioncallback: function(form) {
         alert('success');
       },
     }, options);
@@ -188,15 +189,18 @@
 
 
     settings.button.on('click', function(e) {
+      if (settings.preventDefault) {
+        e.preventDefault();
+      }
       var res = test(form);
 
       if (res) {
         //alert(res);
-        settings.succesfunctioncallback();
+        settings.succesfunctioncallback(form);
 
       }
 
-      if ((!res) | (settings.returnfalse)) {
+      if (!res) {
         return false;
       }
 
