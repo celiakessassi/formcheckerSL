@@ -76,25 +76,25 @@
     function test(form) {
       continue_submit = true;
       var name_element_clicked = $(this).data('name');
-      $('textarea, input', form).each(function(index, element) {
+      $('textarea, input , select ', form).each(function(index, element) {
         /*check if all required are not empty */
         var value = $(this).val();
+        if (value==null) {value='' ; }     
 
         if ($(this).attr(settings.required)) {
-          //alert((value.length==0)&(!$(this).is(':checkbox')));
-          // if(((value.length==0)&(!($(this).is(':checkbox'))))
-          //   |((($(this).is(':checkbox'))&($(this).is(':checked')))==0))
+  
 
           if (
             (((value.length == 0) & (!$(this).is(':checkbox'))) == 1) |
-            (($(this).is(':checkbox')) & ($(this).is(':checked')) == 0)
+            (($(this).is(':checkbox')) & ($(this).is(':checked')) == 0) |
+            (($(this).is('select'))&($(this).val()==null))
           ) {
             continue_submit = false;
             settings.requiredEmpty($(this));
             return false;
           }
         }
-        <!-- check if all email have a correct syntax   --> 
+        //<!-- check if all email have a correct syntax   --> 
         if (continue_submit) {
           if ($(this).attr(settings.email)) {
             if (value.length > 0) {
@@ -189,6 +189,7 @@
 
 
     settings.button.on('click', function(e) {
+
       if (settings.preventDefault) {
         e.preventDefault();
       }
@@ -203,6 +204,7 @@
       if (!res) {
         return false;
       }
+ 
 
 
     });
